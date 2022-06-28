@@ -40,6 +40,15 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 
 const count = (target, input) => {
   // Solution code here...
+  return input.reduce((acc, curr) => {
+    const rowCount = curr.reduce((innerACC, innerCurr) => {
+      if (innerCurr === target) {
+        return innerACC + 1;
+      }
+      return innerACC;
+    }, 0);
+    return acc + rowCount;
+  },0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -71,6 +80,9 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 
 const divisibleByFiveTwoToThePower = (input) => {
   // Solution code here...
+  return input.map(row => {
+    return row.filter(cell => typeof cell === 'number' && cell % 5 === 0).map(cell => Math.pow(2, cell));
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -137,6 +149,15 @@ let starWarsData = [{
 
 let findMaleAndFemale = (data) => {
   // Solution code here...
+  return data.reduce((nameString,character,idx) => {
+    if(idx < data.length - 1 && (character.gender === 'male' || character.gender === 'female')){
+      return nameString + character.name + ' and ';
+    } else if (character.gender === 'male' || character.gender === 'female'){
+      return nameString + character.name;
+    } else {
+      return nameString;
+    }
+  },'');
 };
 
 /* ------------------------------------------------------------------------------------------------
