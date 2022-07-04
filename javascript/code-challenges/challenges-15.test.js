@@ -12,7 +12,9 @@ Write a function named screenForNames that takes in an array of strings and uses
 
 const screenForNames = (arr) => {
   // Solution code here...
-}
+  let regex = /^(Mr\.|Mrs\.|Ms\.|Dr\.)\s[A-Za-z]+/;
+  return arr.filter(str => regex.test(str));
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -100,6 +102,8 @@ let starWarsData = [{
 
 let biggerThanLuke = (arr) => {
   // Solution code here...
+  let luke = arr.find(charc => charc.name === 'Luke Skywalker');
+  return arr.filter(charc => parseInt(charc.mass) > parseInt(luke.mass)).map(charc => charc.name).join(' - ');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -118,6 +122,7 @@ This data could be sorted by name or price.
 
 const sortBy = (property, arr) => {
   // Solution code here...
+  return arr.sort((A, B) => A[property] < B[property] ? -1 : 1);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -134,6 +139,8 @@ https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
 const isSecure = (url) => {
   // Solution code here...
+  let reg = /^(https:\/\/).+/;
+  return reg.test(url);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -157,6 +164,11 @@ Here is a sample board:
 
 const detectTicTacToeWin = (board) => {
   // Solution code here...
+  let oneBoard = board.flat();
+  let columns = [0,1,2].map((element) => [oneBoard[0+element],oneBoard[3+element],oneBoard[6+element]]);
+  let diagonal = [[oneBoard[0],oneBoard[4],oneBoard[8]],[oneBoard[2],oneBoard[4],oneBoard[6]]];
+  let testBoards = [...columns,...diagonal,...board];
+  return testBoards.findIndex(arr => arr.every(pos => pos === 'X') || arr.every(pos => pos === 'O')) !== -1;
 };
 
 /* ------------------------------------------------------------------------------------------------
