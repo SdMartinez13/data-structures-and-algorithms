@@ -20,4 +20,14 @@ To run your tests
 
 ### 401 Data Structures, Code Challenges
 
-- Please follow the instructions specific to your 401 language, which can be found in the directory below, matching your course.
+#### Reverse an Array
+
+- Write a function called `reverseArray` which takes an array as an argument. Without utilizing any of the built-in methods available to your language, return an array with elements in reversed order.
+
+#### Whiteboard Process
+
+- ![Whiteboard](assets/reverseArray.png)
+
+#### Approach and Efficiency
+
+- Today was a group code challenge completed by our instructor, [Ryan Gallaway](https://github.com/rkgallaway).  It was my first experience with whiteboarding, and I really appreciated the instruction.  The whiteboard provided above was done entirely by Mr. Gallaway during instruction.
