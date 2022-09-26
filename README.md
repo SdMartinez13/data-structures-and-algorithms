@@ -1,5 +1,9 @@
 # Data Structures and Algorithms
 
+## Table of Contents
+
+*
+
 ## Code Challenges
 
 ### 401 Data Structures, Code Challenges
