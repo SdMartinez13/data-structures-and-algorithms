@@ -1,96 +1,109 @@
 'use strict';
-const Node = require('./Node');
 
-class LinkedList {
-
-  constructor(head) {
-    this.head = new Node(-1, null);
-  }
-
-  insert(value) {
-    // adds new node with the value to the head of the list
-    const temp = this.head.next;
-    let newNode = new Node(value, temp);
-    this.head.next = newNode;
-    newNode.next = temp;
-  }
-
-  includes(value) {
-    // indicates whether the value exists as a node's value somewhere in the list
-    let currentNode = this.head.next; // this.head is a pointer to the first node
-
-    while (currentNode.next !== null) {
-      if (currentNode.data === value) {
-        return true;
-      } else {
-        currentNode = currentNode.next;
-      }
-    }
-    return currentNode.data === value;
-
-  }
-
-  toString() {
-    // prints a string represenations of the values in a linked list
-    if (this.head === null) {
-      return null;
-    }
-
-    let currentNode = this.head.next;
-    let result = "";
-
-    while (currentNode.next) {
-      console.log(currentNode);
-      result += `{${currentNode.data}} -> `;
-      currentNode = currentNode.next;
-    }
-    result += 'NULL';
-    return result;
-  }
-
-  append(value) {
-    // adds a new node at the end of the list
-    // console.log('helllo');
-    let currentNode = this.head.next;
-
-    while (currentNode.next) {
-      currentNode = currentNode.next;
-    }
-    currentNode.next = new Node(value, null);
-  }
-
-  insertBefore(value, newValue) {
-    // adds node with given new value immediately before the first node that has specified value
-    let currentNode = this.head.next;
-    let subList;
-    if (value === currentNode.data) {
-      this.insert(newValue);
-    }
-    while (currentNode.next !== null) {
-      if (currentNode.next.data === value) {
-        subList = currentNode.next;
-        currentNode.next = new Node(newValue, null);
-      }
-      currentNode = currentNode.next;
-    }
-    currentNode.next = subList;
-  }
-
-  insertAfter(value, newValue) {
-    // ADDS NEW NODE WITH GIVEN NEW VALUE AFTER THE FIRST NODE THAT HAS VALUE SPECIFIED
-    let currentNode = this.head.next;
-    let subList;
-
-    while (currentNode.next !== null) {
-      if (currentNode.data === value) {
-        subList = currentNode.next;
-        currentNode.next = new Node(newValue);
-      }
-      currentNode = currentNode.next;
-    }
-
-    currentNode.next = subList;
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
   }
 }
 
-module.exports = LinkedList;
+class LinkedList {
+  constructor() {
+    this.head = null;
+  }
+
+  insert(value) {
+    const newHead = new Node(value);
+    const currentHead = this.head;
+    this.head = newHead;
+    if(currentHead) {
+      newHead.next = currentHead;
+    }
+  }
+
+  includes(value) {
+    let current = this.head;
+
+    while(current !== null) {
+      if(current.value === value) {
+        return true;
+      } else {
+        current = current.next;
+      }
+    }
+    return false;
+  }
+
+  toString() {
+    let current = this.head;
+    let stringified = '';
+    while(current !== null) {
+      stringified = stringified + `${current.value}`;
+      current = current.next;
+    }
+    return stringified;
+  }
+
+  append(data) {
+    let tail = this.head;
+    if (!tail) {
+      this.head = new Node(data);
+    } else {
+      while (tail.next !== null) {
+        tail = tail.next;
+      }
+      tail.next = new Node(data);
+    }
+  }
+
+  insertBefore(value, newValue) {
+    let current = this.head;
+    let after = current.next;
+    while (after !== value) {
+      if (after === null) throw 'Value not found';
+      current = after;
+    }
+    current.next = new Node(newValue, after);
+  }
+
+  insertAfter(value, newValue) {
+    let node = new Node(newValue);
+    let current = this.head;
+    let temp;
+
+    while (current) {
+      if (current.value === value) {
+        temp = current.next;
+        current.next = node;
+        node.next = temp;
+        return;
+      } else {
+        current = current.next;
+      }
+    }
+  }
+
+  kFromEnd (k) {
+    if (k < 1) {
+      return null;
+    }
+    let current = this.head;
+    let nBehindCurrent = this.head;
+    for (let i = 0; i < k - 1; i++) {
+      current = current.next;
+      if (!current) {
+        return null;
+      }
+    }
+    while (typeof current.next !== 'undefined') {
+      nBehindCurrent = nBehindCurrent.next;
+      current = current.next;
+    }
+    return nBehindCurrent;
+  }
+}
+
+
+
+
+module.exports = (LinkedList, Node);
