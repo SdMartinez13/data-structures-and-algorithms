@@ -101,9 +101,42 @@ class LinkedList {
     }
     return nBehindCurrent;
   }
+
+  zipLists (ll1, ll2) {
+    const newll = new LinkedList();
+    let list1 = ll1.head;
+    let list2 = ll2.head;
+
+    if (ll1.head === null && ll2.head === null) return newll;
+    if (ll1.head === null) {
+      newll.head = ll2.head;
+      return newll;
+    }
+    if (ll2.head === null) {
+      newll.head = ll1.head;
+      return newll;
+    }
+
+    while (list1 && list2) {
+      newll.append(list1.value);
+      newll.append(list2.value);
+      list1 = list1.next;
+      list2 = list2.next;
+    }
+    if (list1) {
+      while (list1) {
+        newll.append(list1.value);
+        list1 = list1.next;
+      }
+    }
+    if (list2) {
+      while (list2) {
+        newll.append(list2.value);
+        list2 = list2.next;
+      }
+    }
+    return newll;
+  }
 }
-
-
-
 
 module.exports = (LinkedList, Node);
