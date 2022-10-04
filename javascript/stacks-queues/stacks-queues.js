@@ -73,7 +73,40 @@ class Queue {
   }
 }
 
+
+class PseudoQueue {
+  constructor() {
+    this.stack1 = new Stack;
+    this.stack2 = new Stack;
+  }
+  enqueue(val) {
+    if (this.stack2.top === null) {
+      this.stack1.push(val);
+    } else {
+      while (this.stack2.top) {
+        let transfer = this.stack2.pop();
+        this.stack1.push(transfer);
+      }
+      this.stack1.push(val);
+    }
+  }
+
+  dequeue() {
+
+    if (this.stack1.top === null) {
+      return this.stack2.pop();
+    } else {
+      while (this.stack1.top) {
+        let transfer = this.stack1.pop();
+        this.stack2.push(transfer);
+      }
+      return this.stack2.pop();
+    }
+  }
+}
+
 module.exports = {
   Stack,
   Queue,
+  PseudoQueue
 };

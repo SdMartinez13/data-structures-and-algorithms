@@ -10,3 +10,16 @@
 
 * Linked list are efficient for inserting when inserting to the front or end of a list is required. When building the push/enqueue methods, use a time complexity of O(1). Utilize a back pointer in the Queue class to make enqueueing and dequeueing more efficient.
 
+****
+
+## Stacks & Queues Pseudo
+
+## Challenge
+
+* Implement a Queue using two Stacks.
+
+## Approach & Efficiency
+
+* Linked list are efficient for inserting when inserting to the front or end of a list is required. When building the push/enqueue methods, use a time complexity of O(1). Utilize a back pointer in the Queue class to make enqueueing and dequeueing more efficient.
+
+* ![Stacks&Queues](/assets/stacks-queues.png)
