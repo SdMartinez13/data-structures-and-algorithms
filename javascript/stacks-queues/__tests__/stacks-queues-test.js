@@ -38,16 +38,21 @@ describe('Stack', () => {
 
   it('Can successfully peek the next item on the stack', () => {
     let stack = new Stack();
+    console.log(stack);
     // How to successfully peek into the next item on the stack
   });
 
   it ('Can successfully instantiate an empty stack', () => {
     let stack = new Stack();
+    console.log(stack);
+
     // How successfully instantiate an empty stack
   });
 
   it ('Calling pop or peek on empty stack raises exception', () => {
     let stack = new Stack();
+    console.log(stack);
+
     // How to Call pop or peek on empty stack raises exception
   });
 
@@ -79,6 +84,8 @@ describe('Queue', () => {
 
   it ('Can successfully peek into a queue, seeing the expected value', () => {
     let queue = new Queue();
+    console.log(queue);
+
     // How to peek into a queue
   });
 
@@ -98,6 +105,8 @@ describe('Queue', () => {
 
   it ('Calling dequeue or peek on empty queue raises exception', () => {
     let queue = new Queue();
+    console.log(queue);
+
     // How to call dequeue or peek on empty queue raises exception
   });
 
