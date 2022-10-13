@@ -30,4 +30,4 @@
 
 ## Solution
 
-* [Code](https://github.com/SdMartinez13/data-structures-and-algorithms/tree/main/javascript/trees)
+* [Code](https://github.com/SdMartinez13/data-structures-and-algorithms/blob/main/javascript/trees/tree-fizz-buzz/tree-fizz-buzz.js)
