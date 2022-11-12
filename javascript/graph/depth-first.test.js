@@ -1,6 +1,6 @@
 'use strict';
 
-const depthFirst = require('../depthFirst');
+const depthFirst = require('../graph/depth-first');
 
 describe('depthFirst', () => {
   it('should return a set of all nodes visited', () => {

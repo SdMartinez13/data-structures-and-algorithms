@@ -1,6 +1,6 @@
 'use strict';
 
-const Graph = require('../index');
+const Graph = require('../graph/business-trip');
 
 describe('Business Trip Test', () => {
   let graph = new Graph();
